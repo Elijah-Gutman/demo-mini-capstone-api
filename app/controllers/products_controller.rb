@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :authenticate_admin, except: [:index, :show]
 
   def index
-    @products = Product.all
+    # Preload associations to prevent N+1 queries
+    @products = Product.includes(:supplier, :images, :categories).all
     render :index
   end
 
@@ -22,7 +23,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
+    # Preload associations for single product
+    @product = Product.includes(:supplier, :images, :categories).find_by(id: params[:id])
     render :show
   end
 
