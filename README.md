@@ -96,6 +96,9 @@ This project is a fully functional backend for a blogging platform built with **
    updated_at datetime Timestamp
    Skills Demonstrated
    Relational Databases:
+6. Addressing the N+1 Problem in the ProductsController
+
+To improve performance and scalability, we addressed the N+1 problem in the ProductsController. By utilizing Rails' includes method in the index and show actions, we ensured that associated data such as supplier, images, and categories is preloaded efficiently in a single query (or minimal queries). This change reduces the number of database queries needed to render the product data, significantly improving load times when dealing with large datasets. These optimizations follow Rails best practices and ensure a seamless user experience while maintaining the integrity of the application's functionality.
 
 Designed a clean schema with appropriate relationships and data integrity constraints.
 Wrote migrations to manage database structure effectively.
@@ -114,5 +117,7 @@ Debugged issues with ActiveRecord and API responses to ensure correctness.
 Frontend Collaboration:
 
 Communicated effectively with frontend developers by providing well-structured and predictable API responses.
+
 # demo-mini-capstone-api
+
 # demo-mini-capstone-api
